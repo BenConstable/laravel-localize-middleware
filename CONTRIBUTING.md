@@ -1,1 +1,5 @@
-Nothing here yet...
+#Laravel Localize Middleware
+
+##Contributing
+
+TODO
