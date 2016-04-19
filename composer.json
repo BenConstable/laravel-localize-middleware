@@ -1,0 +1,43 @@
+{
+    "name": "benconstable/laravel-localize-middleware",
+    "description": "Configurable localization middleware for your Laravel 5 application",
+    "keywords": [
+        "laravel",
+        "localise",
+        "localize",
+        "middleware"
+    ],
+    "homepage": "https://github.com/BenConstable/laravel-localize-middleware",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben Constable",
+            "email": "ben@benconstable.co.uk",
+            "homepage": "https://benconstable.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "~5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8",
+        "mockery/mockery": "~0.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "BenConstable\\Localize\\": "src/Localize"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BenConstable\\Test\\Localize\\": "tests/Localize"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x.dev"
+        }
+    }
+}
