@@ -3,7 +3,6 @@
 > Configurable localization middleware for your Laravel 5 application.
 
 [![Build Status](https://travis-ci.org/BenConstable/laravel-localize-middleware.svg?branch=master)](https://travis-ci.org/BenConstable/laravel-localize-middleware)
-[![Total Downloads](https://poser.pugx.org/benconstable/laravel-localize-middleware/downloads)](https://packagist.org/packages/benconstable/laravel-localize-middleware)
 [![Latest Stable Version](https://poser.pugx.org/benconstable/laravel-localize-middleware/v/stable)](https://packagist.org/packages/benconstable/laravel-localize-middleware)
 [![License](https://poser.pugx.org/benconstable/laravel-localize-middleware/license)](https://packagist.org/packages/benconstable/laravel-localize-middleware)
 
