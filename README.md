@@ -129,6 +129,14 @@ to determine the locale and do with it what you like.
 
 See [CONTRIBUTING.md](https://github.com/BenConstable/laravel-localize-middleware/blob/master/CONTRIBUTING.md).
 
+##Other Localization Projects
+
+Here are some other Laravel localization projects that might be useful to you:
+
+* [mcamara/laravel-localization](https://github.com/mcamara/laravel-localization)
+* [Waavi/translation](https://github.com/Waavi/translation)
+* [caouecs/Laravel-lang](https://github.com/caouecs/Laravel-lang)
+
 ##License
 
 MIT &copy; Ben Constable 2016. See [LICENSE](https://github.com/BenConstable/laravel-localize-middleware/blob/master/LICENSE) for more info.
