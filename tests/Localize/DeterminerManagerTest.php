@@ -9,6 +9,7 @@ use BenConstable\Localize\Determiners\DeterminerInterface;
 use BenConstable\Localize\Determiners\Cookie as CookieDeterminer;
 use BenConstable\Localize\Determiners\Host as HostDeterminer;
 use BenConstable\Localize\Determiners\Parameter as ParameterDeterminer;
+use BenConstable\Localize\Determiners\Header as HeaderDeterminer;
 use BenConstable\Localize\Determiners\Session as SessionDeterminer;
 
 class DeterminerManagerTest extends PHPUnit_Framework_TestCase
@@ -58,6 +59,13 @@ class DeterminerManagerTest extends PHPUnit_Framework_TestCase
         $manager = new DeterminerManager($this->app);
 
         $this->assertInstanceOf(SessionDeterminer::class, $manager->driver('session'));
+    }
+
+    public function testThatItCreatesAHeaderDeterminer()
+    {
+        $manager = new DeterminerManager($this->app);
+
+        $this->assertInstanceOf(HeaderDeterminer::class, $manager->driver('header'));
     }
 
     public function testThatItReturnsADefaultDeterminer()

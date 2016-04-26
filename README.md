@@ -78,6 +78,16 @@ Route::group(['prefix' => '{locale}'], function () {
 });
 ```
 
+###Determining the locale from a request header
+
+**Driver name:** `header`
+
+This determiner sets the application locale from a request header, which defaults
+to `Accept-Language`. You can change this using the `header` configuration option.
+
+*Aside:* For information on using `Accept-Language` to determine the locale,
+see [this info from the W3C](https://www.w3.org/International/questions/qa-accept-lang-locales).
+
 ###Determining the locale using the current host
 
 **Driver name:** `host`

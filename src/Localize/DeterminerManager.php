@@ -6,6 +6,7 @@ use Illuminate\Support\Manager;
 use BenConstable\Localize\Determiners\Cookie as CookieDeterminer;
 use BenConstable\Localize\Determiners\Host as HostDeterminer;
 use BenConstable\Localize\Determiners\Parameter as ParameterDeterminer;
+use BenConstable\Localize\Determiners\Header as HeaderDeterminer;
 use BenConstable\Localize\Determiners\Session as SessionDeterminer;
 
 /**
@@ -48,6 +49,19 @@ class DeterminerManager extends Manager
     {
         return new ParameterDeterminer(
             $this->app['config']['localize-middleware']['parameter'],
+            $this->app['config']['app']['fallback_locale']
+        );
+    }
+
+    /**
+     * Get a header determiner instance.
+     *
+     * @return \BenConstable\Localize\Determiners\Header
+     */
+    protected function createHeaderDriver()
+    {
+        return new HeaderDeterminer(
+            $this->app['config']['localize-middleware']['header'],
             $this->app['config']['app']['fallback_locale']
         );
     }

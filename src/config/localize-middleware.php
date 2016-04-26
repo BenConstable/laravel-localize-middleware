@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Set the strategy to use for localizing the application. You can pick from
-    | "parameter" (the default), "host", "cookie" or "session".
+    | "parameter" (the default), "host", "cookie", "header" or "session".
     |
     */
 
@@ -49,6 +49,21 @@ return [
     */
 
    'session' => 'locale',
+
+   /*
+    |--------------------------------------------------------------------------
+    | Locale Header Name.
+    |--------------------------------------------------------------------------
+    |
+    | Define the name of the header to use to determine the user's locale. This
+    | configures the "header" driver, and defaults to "Accept-Language".
+    |
+    | See https://www.w3.org/International/questions/qa-accept-lang-locales for
+    | more information on determining the user's locale from Accept-Language
+    |
+    */
+
+   'header' => 'Accept-Language',
 
     /*
     |--------------------------------------------------------------------------
