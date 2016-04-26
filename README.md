@@ -8,7 +8,8 @@
 
 This package provides a simple set of configuration and middleware to allow you
 to automatically set your application's locale using the current request. You can
-set the locale from a request parameter, the current host, a cookie or session data.
+set the locale from a request parameter, header, the current host, a cookie or
+session data.
 
 ##Installation
 
