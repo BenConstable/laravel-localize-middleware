@@ -11,6 +11,7 @@ use BenConstable\Localize\Determiners\Host as HostDeterminer;
 use BenConstable\Localize\Determiners\Parameter as ParameterDeterminer;
 use BenConstable\Localize\Determiners\Header as HeaderDeterminer;
 use BenConstable\Localize\Determiners\Session as SessionDeterminer;
+use BenConstable\Localize\Determiners\Stack as StackDeterminer;
 
 class DeterminerManagerTest extends PHPUnit_Framework_TestCase
 {
@@ -66,6 +67,19 @@ class DeterminerManagerTest extends PHPUnit_Framework_TestCase
         $manager = new DeterminerManager($this->app);
 
         $this->assertInstanceOf(HeaderDeterminer::class, $manager->driver('header'));
+    }
+
+    public function testThatItCreatesAStackDeterminer()
+    {
+        $manager = new DeterminerManager($this->app);
+
+        $determiner = $manager->driver('stack');
+
+        $this->assertInstanceOf(StackDeterminer::class, $determiner);
+
+        $this->assertCount(1, $determiner->getDeterminers());
+
+        $this->assertInstanceOf(ParameterDeterminer::class, $determiner->getDeterminers()->first());
     }
 
     public function testThatItReturnsADefaultDeterminer()

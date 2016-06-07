@@ -8,6 +8,7 @@ use BenConstable\Localize\Determiners\Host as HostDeterminer;
 use BenConstable\Localize\Determiners\Parameter as ParameterDeterminer;
 use BenConstable\Localize\Determiners\Header as HeaderDeterminer;
 use BenConstable\Localize\Determiners\Session as SessionDeterminer;
+use BenConstable\Localize\Determiners\Stack as StackDeterminer;
 
 /**
  * Manager class for the different locale determiners.
@@ -95,12 +96,33 @@ class DeterminerManager extends Manager
     }
 
     /**
+     * Get a stack determiner instance.
+     *
+     * @return \BenConstable\Localize\Determiners\Stack
+     */
+    protected function createStackDriver()
+    {
+        $determiners = collect((array) $this->app['config']['localize-middleware']['driver'])
+            ->filter(function ($driver) {
+                return $driver !== 'stack';
+            })
+            ->map(function ($driver) {
+                return $this->driver($driver)->setFallback(null);
+            });
+
+        return (new StackDeterminer($determiners))
+            ->setFallback($this->app['config']['app']['fallback_locale']);
+    }
+
+    /**
      * Get the default localize driver name.
      *
      * @return string
      */
     public function getDefaultDriver()
     {
-        return $this->app['config']['localize-middleware']['driver'];
+        $driver = $this->app['config']['localize-middleware']['driver'];
+
+        return is_array($driver) ? 'stack' : $driver;
     }
 }

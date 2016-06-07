@@ -10,9 +10,18 @@ return [
     | Set the strategy to use for localizing the application. You can pick from
     | "parameter" (the default), "host", "cookie", "header" or "session".
     |
+    | You may also set an array of strategies, and then the locale will be
+    | determined by the first that finds a match.
+    |
     */
 
     'driver' => 'parameter',
+
+    // 'driver' => [
+    //     'session',
+    //     'cookie',
+    //     'parameter'
+    // ],
 
     /*
     |--------------------------------------------------------------------------
