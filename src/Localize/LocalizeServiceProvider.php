@@ -12,14 +12,14 @@ class LocalizeServiceProvider extends ServiceProvider
     /**
      * Indicates if loading of the provider is deferred.
      *
-     * @var boolean
+     * @var  boolean
      */
     protected $defer = true;
 
     /**
      * Perform post-registration booting of services.
      *
-     * @return void
+     * @return  void
      */
     public function boot()
     {
@@ -31,7 +31,7 @@ class LocalizeServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      *
-     * @return void
+     * @return  void
      */
     public function register()
     {
@@ -43,7 +43,7 @@ class LocalizeServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return  array
      */
     public function provides()
     {

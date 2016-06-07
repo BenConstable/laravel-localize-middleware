@@ -18,7 +18,7 @@ class DeterminerManager extends Manager
     /**
      * Get a cookie determiner instance.
      *
-     * @return \BenConstable\Localize\Determiners\Cookie
+     * @return  \BenConstable\Localize\Determiners\Cookie
      */
     protected function createCookieDriver()
     {
@@ -34,7 +34,7 @@ class DeterminerManager extends Manager
     /**
      * Get a host determiner instance.
      *
-     * @return \BenConstable\Localize\Determiners\Host
+     * @return  \BenConstable\Localize\Determiners\Host
      */
     protected function createHostDriver()
     {
@@ -50,7 +50,7 @@ class DeterminerManager extends Manager
     /**
      * Get a parameter determiner instance.
      *
-     * @return \BenConstable\Localize\Determiners\Parameter
+     * @return  \BenConstable\Localize\Determiners\Parameter
      */
     protected function createParameterDriver()
     {
@@ -66,7 +66,7 @@ class DeterminerManager extends Manager
     /**
      * Get a header determiner instance.
      *
-     * @return \BenConstable\Localize\Determiners\Header
+     * @return  \BenConstable\Localize\Determiners\Header
      */
     protected function createHeaderDriver()
     {
@@ -82,7 +82,7 @@ class DeterminerManager extends Manager
     /**
      * Get a session determiner instance.
      *
-     * @return \BenConstable\Localize\Determiners\Session
+     * @return  \BenConstable\Localize\Determiners\Session
      */
     protected function createSessionDriver()
     {
@@ -98,7 +98,7 @@ class DeterminerManager extends Manager
     /**
      * Get a stack determiner instance.
      *
-     * @return \BenConstable\Localize\Determiners\Stack
+     * @return  \BenConstable\Localize\Determiners\Stack
      */
     protected function createStackDriver()
     {
@@ -117,7 +117,7 @@ class DeterminerManager extends Manager
     /**
      * Get the default localize driver name.
      *
-     * @return string
+     * @return  string
      */
     public function getDefaultDriver()
     {

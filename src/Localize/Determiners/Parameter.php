@@ -19,8 +19,8 @@ class Parameter extends Determiner
     /**
      * Constructor.
      *
-     * @param  string $requestParam Name of the request parameter that holds the locale
-     * @return void
+     * @param  string  $requestParam  Name of the request parameter that holds the locale
+     * @return  void
      */
     public function __construct($requestParam)
     {
@@ -30,8 +30,8 @@ class Parameter extends Determiner
     /**
      * Determine the locale from the request parameters.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return string
+     * @param  \Illuminate\Http\Request  $request
+     * @return  string
      */
     public function determineLocale(Request $request)
     {

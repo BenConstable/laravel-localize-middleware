@@ -12,15 +12,15 @@ class Header extends Determiner
     /**
      * Name of the header that holds the locale.
      *
-     * @var string
+     * @var  string
      */
     private $header;
 
     /**
      * Constructor.
      *
-     * @param  string $header Name of the header that holds the locale
-     * @return void
+     * @param  string  $header  Name of the header that holds the locale
+     * @return  void
      */
     public function __construct($header)
     {
@@ -30,8 +30,8 @@ class Header extends Determiner
     /**
      * Determine the locale from the request parameters.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return string
+     * @param  \Illuminate\Http\Request  $request
+     * @return  string
      */
     public function determineLocale(Request $request)
     {

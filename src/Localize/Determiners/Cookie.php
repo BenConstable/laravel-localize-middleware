@@ -12,15 +12,15 @@ class Cookie extends Determiner
     /**
      * Name of the cookie that holds the locale.
      *
-     * @var string
+     * @var  string
      */
     private $cookieName;
 
     /**
      * Constructor.
      *
-     * @param  string $cookieName Name of the cookie that holds the locale
-     * @return void
+     * @param  string  $cookieName  Name of the cookie that holds the locale
+     * @return  void
      */
     public function __construct($cookieName)
     {
@@ -30,8 +30,8 @@ class Cookie extends Determiner
     /**
      * Determine the locale from a cookie.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return string
+     * @param  \Illuminate\Http\Request  $request
+     * @return  string
      */
     public function determineLocale(Request $request)
     {

@@ -13,8 +13,8 @@ interface DeterminerInterface
     /**
      * Use the given request to determine what the application locale should be.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return string                            Locale name (en, es etc)
+     * @param  \Illuminate\Http\Request  $request
+     * @return  string  Locale name (en, es etc)
      */
     public function determineLocale(Request $request);
 
@@ -22,7 +22,7 @@ interface DeterminerInterface
      * Set the fallback locale for this determiner.
      *
      * @param  string  $locale
-     * @return \BenConstable\Localize\Determiners\DeterminerInterface
+     * @return  \BenConstable\Localize\Determiners\DeterminerInterface
      */
     public function setFallback($locale);
 }

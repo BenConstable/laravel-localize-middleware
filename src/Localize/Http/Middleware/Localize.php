@@ -15,23 +15,23 @@ class Localize
     /**
      * Laravel application.
      *
-     * @var \Illuminate\Foundation\Application
+     * @var  \Illuminate\Foundation\Application
      */
     private $app;
 
     /**
      * Application localizer.
      *
-     * @var \BenConstable\Localize\DeterminerManager
+     * @var  \BenConstable\Localize\DeterminerManager
      */
     private $determinerManager;
 
     /**
      * Constructor.
      *
-     * @param  \Illuminate\Foundation\Application       $app
-     * @param  \BenConstable\Localize\DeterminerManager $determinerManager
-     * @return void
+     * @param  \Illuminate\Foundation\Application  $app
+     * @param  \BenConstable\Localize\DeterminerManager  $determinerManager
+     * @return  void
      */
     public function __construct(
         Application $app,
@@ -44,10 +44,10 @@ class Localize
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
-     * @param  string|null              $guard
-     * @return mixed
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string|null  $guard
+     * @return  mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {

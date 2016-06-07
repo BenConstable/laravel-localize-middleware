@@ -12,15 +12,15 @@ class Session extends Determiner
     /**
      * Name of the session key that holds the locale.
      *
-     * @var string
+     * @var  string
      */
     private $sessionKey;
 
     /**
      * Constructor.
      *
-     * @param  string $sessionKey Name of the session key that holds the locale
-     * @return void
+     * @param  string  $sessionKey  Name of the session key that holds the locale
+     * @return  void
      */
     public function __construct($sessionKey)
     {
@@ -30,8 +30,8 @@ class Session extends Determiner
     /**
      * Determine the locale from the session.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return string
+     * @param  \Illuminate\Http\Request  $request
+     * @return  string
      */
     public function determineLocale(Request $request)
     {

@@ -14,15 +14,15 @@ class Host extends Determiner
     /**
      * Locale to host mapping.
      *
-     * @var \Illuminate\Support\Collection
+     * @var  \Illuminate\Support\Collection
      */
     private $hostMapping;
 
     /**
      * Constructor.
      *
-     * @param  \Illuminate\Support\Collection $hostMapping Locale to host mapping
-     * @return void
+     * @param  \Illuminate\Support\Collection  $hostMapping  Locale to host mapping
+     * @return  void
      */
     public function __construct(Collection $hostMapping)
     {
@@ -32,8 +32,8 @@ class Host extends Determiner
     /**
      * Determine the locale from the current host.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return string
+     * @param  \Illuminate\Http\Request  $request
+     * @return  string
      */
     public function determineLocale(Request $request)
     {

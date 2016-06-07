@@ -12,7 +12,7 @@ class DeterminerFacade extends Facade
     /**
      * Get the registered name of the component.
      *
-     * @return string
+     * @return  string
      */
     public static function getFacadeAccessor()
     {
