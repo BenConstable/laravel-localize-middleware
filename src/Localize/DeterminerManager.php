@@ -3,6 +3,7 @@
 namespace BenConstable\Localize;
 
 use Illuminate\Support\Manager;
+use Illuminate\Support\Collection;
 use BenConstable\Localize\Determiners\Cookie as CookieDeterminer;
 use BenConstable\Localize\Determiners\Host as HostDeterminer;
 use BenConstable\Localize\Determiners\Parameter as ParameterDeterminer;
@@ -39,7 +40,7 @@ class DeterminerManager extends Manager
     protected function createHostDriver()
     {
         $determiner = new HostDeterminer(
-            collect($this->app['config']['localize-middleware']['hosts'])
+            new Collection($this->app['config']['localize-middleware']['hosts'])
         );
 
         $determiner->setFallback($this->app['config']['app']['fallback_locale']);
@@ -102,7 +103,7 @@ class DeterminerManager extends Manager
      */
     protected function createStackDriver()
     {
-        $determiners = collect((array) $this->app['config']['localize-middleware']['driver'])
+        $determiners = (new Collection((array) $this->app['config']['localize-middleware']['driver']))
             ->filter(function ($driver) {
                 return $driver !== 'stack';
             })
