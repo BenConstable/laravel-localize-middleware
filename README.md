@@ -52,7 +52,7 @@ protected $middleware = [
 ```
 
 It's recommended to set this middleware globally and early in the stack, but you're
-free to register it in whatever way that suits you needs.
+free to register it in whatever way that suits your needs.
 
 ###Configuration
 
@@ -110,6 +110,23 @@ change this using the `cookie` configuration option.
 
 This determiner sets the application locale from a session value called `locale`.
 You can change this using the `session` configuration option.
+
+###Using multiple determiners
+
+Sometimes it might be useful to try and determine the locale from more than one
+source. If you'd like to do this, just set the `driver` configuration option to an
+array of other driver names. For example:
+
+```php
+'driver' => [
+    'cookie',
+    'parameter'
+]
+```
+
+The locale will then be deteremined from whichever determiner first provides a
+successful match, so make sure you add the drivers in the correct order (earliest
+in the array will be used first).
 
 ###Determining the locale outside of middleware
 
