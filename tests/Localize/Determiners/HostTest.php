@@ -13,10 +13,10 @@ class HostTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->determiner = new Host(new Collection([
+        $this->determiner = (new Host(new Collection([
             'en' => 'en.example.host',
             'fr' => 'france.example.host'
-        ]), 'de');
+        ])))->setFallback('de');
     }
 
     public function tearDown()
@@ -67,7 +67,7 @@ class HostTest extends PHPUnit_Framework_TestCase
 
         // Two
 
-        $determiner = new Host(new Collection([]), 'es');
+        $determiner = (new Host(new Collection([])))->setFallback('es');
 
         $locale = $determiner->determineLocale($request);
 

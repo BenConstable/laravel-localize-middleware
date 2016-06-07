@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
  * This locale determiner fetches the locale from the request host
  * and a pre-defined mapping.
  */
-class Host implements DeterminerInterface
+class Host extends Determiner
 {
     /**
      * Locale to host mapping.
@@ -19,23 +19,14 @@ class Host implements DeterminerInterface
     private $hostMapping;
 
     /**
-     * Fallback locale.
-     *
-     * @var string
-     */
-    private $fallback;
-
-    /**
      * Constructor.
      *
      * @param  \Illuminate\Support\Collection $hostMapping Locale to host mapping
-     * @param  string                         $fallback    Fallback locale
      * @return void
      */
-    public function __construct(Collection $hostMapping, $fallback)
+    public function __construct(Collection $hostMapping)
     {
         $this->hostMapping = $hostMapping;
-        $this->fallback = $fallback;
     }
 
     /**

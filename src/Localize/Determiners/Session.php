@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 /**
  * This locale determiner fetches the locale from the session.
  */
-class Session implements DeterminerInterface
+class Session extends Determiner
 {
     /**
      * Name of the session key that holds the locale.
@@ -17,23 +17,14 @@ class Session implements DeterminerInterface
     private $sessionKey;
 
     /**
-     * Fallback locale.
-     *
-     * @var string
-     */
-    private $fallback;
-
-    /**
      * Constructor.
      *
      * @param  string $sessionKey Name of the session key that holds the locale
-     * @param  string $fallback   Fallback locale
      * @return void
      */
-    public function __construct($sessionKey, $fallback)
+    public function __construct($sessionKey)
     {
         $this->sessionKey = $sessionKey;
-        $this->fallback = $fallback;
     }
 
     /**

@@ -16,7 +16,7 @@ class ParameterTest extends PHPUnit_Framework_TestCase
     {
         $this->requestParameter = 'locale';
         $this->fallback = 'de';
-        $this->determiner = new Parameter($this->requestParameter, $this->fallback);
+        $this->determiner = (new Parameter($this->requestParameter))->setFallback($this->fallback);
     }
 
     public function tearDown()

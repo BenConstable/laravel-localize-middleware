@@ -21,10 +21,13 @@ class DeterminerManager extends Manager
      */
     protected function createCookieDriver()
     {
-        return new CookieDeterminer(
-            $this->app['config']['localize-middleware']['cookie'],
-            $this->app['config']['app']['fallback_locale']
+        $determiner = new CookieDeterminer(
+            $this->app['config']['localize-middleware']['cookie']
         );
+
+        $determiner->setFallback($this->app['config']['app']['fallback_locale']);
+
+        return $determiner;
     }
 
     /**
@@ -34,10 +37,13 @@ class DeterminerManager extends Manager
      */
     protected function createHostDriver()
     {
-        return new HostDeterminer(
-            collect($this->app['config']['localize-middleware']['hosts']),
-            $this->app['config']['app']['fallback_locale']
+        $determiner = new HostDeterminer(
+            collect($this->app['config']['localize-middleware']['hosts'])
         );
+
+        $determiner->setFallback($this->app['config']['app']['fallback_locale']);
+
+        return $determiner;
     }
 
     /**
@@ -47,10 +53,13 @@ class DeterminerManager extends Manager
      */
     protected function createParameterDriver()
     {
-        return new ParameterDeterminer(
-            $this->app['config']['localize-middleware']['parameter'],
-            $this->app['config']['app']['fallback_locale']
+        $determiner = new ParameterDeterminer(
+            $this->app['config']['localize-middleware']['parameter']
         );
+
+        $determiner->setFallback($this->app['config']['app']['fallback_locale']);
+
+        return $determiner;
     }
 
     /**
@@ -60,10 +69,13 @@ class DeterminerManager extends Manager
      */
     protected function createHeaderDriver()
     {
-        return new HeaderDeterminer(
-            $this->app['config']['localize-middleware']['header'],
-            $this->app['config']['app']['fallback_locale']
+        $determiner = new HeaderDeterminer(
+            $this->app['config']['localize-middleware']['header']
         );
+
+        $determiner->setFallback($this->app['config']['app']['fallback_locale']);
+
+        return $determiner;
     }
 
     /**
@@ -73,10 +85,13 @@ class DeterminerManager extends Manager
      */
     protected function createSessionDriver()
     {
-        return new SessionDeterminer(
-            $this->app['config']['localize-middleware']['session'],
-            $this->app['config']['app']['fallback_locale']
+        $determiner = new SessionDeterminer(
+            $this->app['config']['localize-middleware']['session']
         );
+
+        $determiner->setFallback($this->app['config']['app']['fallback_locale']);
+
+        return $determiner;
     }
 
     /**

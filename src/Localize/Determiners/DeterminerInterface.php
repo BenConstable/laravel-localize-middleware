@@ -17,4 +17,12 @@ interface DeterminerInterface
      * @return string                            Locale name (en, es etc)
      */
     public function determineLocale(Request $request);
+
+    /**
+     * Set the fallback locale for this determiner.
+     *
+     * @param  string  $locale
+     * @return \BenConstable\Localize\Determiners\DeterminerInterface
+     */
+    public function setFallback($locale);
 }

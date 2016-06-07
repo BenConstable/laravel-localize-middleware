@@ -16,7 +16,7 @@ class SessionTest extends PHPUnit_Framework_TestCase
     {
         $this->sessionKey = 'locale';
         $this->fallback = 'de';
-        $this->determiner = new Session($this->sessionKey, $this->fallback);
+        $this->determiner = (new Session($this->sessionKey))->setFallback($this->fallback);
     }
 
     public function tearDown()

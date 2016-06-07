@@ -16,7 +16,7 @@ class HeaderTest extends PHPUnit_Framework_TestCase
     {
         $this->header = 'Accept-Language';
         $this->fallback = 'de';
-        $this->determiner = new Header($this->header, $this->fallback);
+        $this->determiner = (new Header($this->header))->setFallback($this->fallback);
     }
 
     public function tearDown()

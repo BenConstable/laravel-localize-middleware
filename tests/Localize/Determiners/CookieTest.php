@@ -16,7 +16,7 @@ class CookieTest extends PHPUnit_Framework_TestCase
     {
         $this->cookieName = 'locale';
         $this->fallback = 'de';
-        $this->determiner = new Cookie($this->cookieName, $this->fallback);
+        $this->determiner = (new Cookie($this->cookieName))->setFallback($this->fallback);
     }
 
     public function tearDown()

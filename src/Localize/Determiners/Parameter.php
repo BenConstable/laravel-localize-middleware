@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 /**
  * This locale determiner fetches the locale from a request parameter.
  */
-class Parameter implements DeterminerInterface
+class Parameter extends Determiner
 {
     /**
      * Name of the request parameter that holds the locale.
@@ -17,23 +17,14 @@ class Parameter implements DeterminerInterface
     private $requestParam;
 
     /**
-     * Fallback locale.
-     *
-     * @var string
-     */
-    private $fallback;
-
-    /**
      * Constructor.
      *
      * @param  string $requestParam Name of the request parameter that holds the locale
-     * @param  string $fallback     Fallback locale
      * @return void
      */
-    public function __construct($requestParam, $fallback)
+    public function __construct($requestParam)
     {
         $this->requestParam = $requestParam;
-        $this->fallback = $fallback;
     }
 
     /**

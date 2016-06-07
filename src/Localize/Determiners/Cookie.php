@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 /**
  * This locale determiner fetches the locale from a cookie.
  */
-class Cookie implements DeterminerInterface
+class Cookie extends Determiner
 {
     /**
      * Name of the cookie that holds the locale.
@@ -17,23 +17,14 @@ class Cookie implements DeterminerInterface
     private $cookieName;
 
     /**
-     * Fallback locale.
-     *
-     * @var string
-     */
-    private $fallback;
-
-    /**
      * Constructor.
      *
      * @param  string $cookieName Name of the cookie that holds the locale
-     * @param  string $fallback   Fallback locale
      * @return void
      */
-    public function __construct($cookieName, $fallback)
+    public function __construct($cookieName)
     {
         $this->cookieName = $cookieName;
-        $this->fallback = $fallback;
     }
 
     /**
