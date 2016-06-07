@@ -4,12 +4,7 @@ namespace BenConstable\Localize;
 
 use Illuminate\Support\Manager;
 use Illuminate\Support\Collection;
-use BenConstable\Localize\Determiners\Cookie as CookieDeterminer;
-use BenConstable\Localize\Determiners\Host as HostDeterminer;
-use BenConstable\Localize\Determiners\Parameter as ParameterDeterminer;
-use BenConstable\Localize\Determiners\Header as HeaderDeterminer;
-use BenConstable\Localize\Determiners\Session as SessionDeterminer;
-use BenConstable\Localize\Determiners\Stack as StackDeterminer;
+use BenConstable\Localize\Determiners;
 
 /**
  * Manager class for the different locale determiners.
@@ -23,7 +18,7 @@ class DeterminerManager extends Manager
      */
     protected function createCookieDriver()
     {
-        $determiner = new CookieDeterminer(
+        $determiner = new Determiners\Cookie(
             $this->app['config']['localize-middleware']['cookie']
         );
 
@@ -39,7 +34,7 @@ class DeterminerManager extends Manager
      */
     protected function createHostDriver()
     {
-        $determiner = new HostDeterminer(
+        $determiner = new Determiners\Host(
             new Collection($this->app['config']['localize-middleware']['hosts'])
         );
 
@@ -55,7 +50,7 @@ class DeterminerManager extends Manager
      */
     protected function createParameterDriver()
     {
-        $determiner = new ParameterDeterminer(
+        $determiner = new Determiners\Parameter(
             $this->app['config']['localize-middleware']['parameter']
         );
 
@@ -71,7 +66,7 @@ class DeterminerManager extends Manager
      */
     protected function createHeaderDriver()
     {
-        $determiner = new HeaderDeterminer(
+        $determiner = new Determiners\Header(
             $this->app['config']['localize-middleware']['header']
         );
 
@@ -87,7 +82,7 @@ class DeterminerManager extends Manager
      */
     protected function createSessionDriver()
     {
-        $determiner = new SessionDeterminer(
+        $determiner = new Determiners\Session(
             $this->app['config']['localize-middleware']['session']
         );
 
@@ -111,7 +106,7 @@ class DeterminerManager extends Manager
                 return $this->driver($driver)->setFallback(null);
             });
 
-        return (new StackDeterminer($determiners))
+        return (new Determiners\Stack($determiners))
             ->setFallback($this->app['config']['app']['fallback_locale']);
     }
 
