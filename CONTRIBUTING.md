@@ -1,9 +1,9 @@
-#Contributing to Laravel Localize Middleware
+# Contributing to Laravel Localize Middleware
 
 Thanks very much for deciding to contribute to this project! The guidelines below
 give you a good idea of how to get your issue fixed, or create a solid Pull Request.
 
-##Submitting Issues
+## Submitting Issues
 
 (where appropriate)
 
@@ -11,7 +11,7 @@ give you a good idea of how to get your issue fixed, or create a solid Pull Requ
 * Include details of any exception that's been thrown
 * If you can, include any relevant code that caused the issue
 
-##Submitting Pull Requests
+## Submitting Pull Requests
 
 1. Fork the project
 2. Create a feature branch from `master`
