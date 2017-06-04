@@ -37,13 +37,14 @@ class Stack extends Determiner
      */
     public function determineLocale(Request $request)
     {
-        return $this->determiners
+        $locale = $this->determiners
             ->map(function ($determiner) use ($request) {
                 return $determiner->determineLocale($request);
             })
-            ->first(function ($index, $locale) {
-                return $locale !== null;
-            }, $this->fallback);
+            ->filter()
+            ->first();
+
+        return $locale ?: $this->fallback;
     }
 
     /**
