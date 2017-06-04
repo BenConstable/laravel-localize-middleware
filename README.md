@@ -167,4 +167,4 @@ Here are some other Laravel localization projects that might be useful to you:
 
 ## License
 
-MIT &copy; Ben Constable 2016. See [LICENSE](https://github.com/BenConstable/laravel-localize-middleware/blob/master/LICENSE) for more info.
+MIT &copy; Ben Constable 2017. See [LICENSE](https://github.com/BenConstable/laravel-localize-middleware/blob/master/LICENSE) for more info.
