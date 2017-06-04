@@ -41,7 +41,7 @@ which will create `config/localize-middleware.php`.
 
 Out-of-the-box, the package is configured to set the application locale using a
 request parameter called `locale` (see the next section for more info). To enable
-this functionality, just [register the provided middleware](https://laravel.com/docs/5.2/middleware#registering-middleware) in your `app/Http/Kernel.php` class:
+this functionality, just [register the provided middleware](https://laravel.com/docs/5.4/middleware#registering-middleware) in your `app/Http/Kernel.php` class:
 
 ```php
 // app/Http/Kernel.php
