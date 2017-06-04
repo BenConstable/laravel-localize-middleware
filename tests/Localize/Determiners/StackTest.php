@@ -12,36 +12,26 @@ use BenConstable\Localize\Determiners\Parameter;
 
 class StackTest extends PHPUnit_Framework_TestCase
 {
-    private $fallback;
-    private $stack;
-    private $determiner;
-
-    public function setUp()
-    {
-        $this->fallback = 'de';
-
-        $this->stack = new Collection([
-            new Parameter('locale'),
-            new Cookie('locale'),
-            new Session('locale')
-        ]);
-
-        $this->determiner = (new Stack($this->stack))->setFallback($this->fallback);
-    }
-
     public function tearDown()
     {
         Mockery::close();
     }
 
-    public function testDeterminesLocaleFromStack()
+    /** @test **/
+    public function determine_locale()
     {
+        $determiner = new Stack(new Collection([
+            new Parameter('locale'),
+            new Cookie('locale'),
+            new Session('locale')
+        ]));
+
         $request = $this->mockRequest([
             'parameter' => 'en',
             'cookie' => null,
             'session' => null
         ]);
-        $result = $this->determiner->determineLocale($request);
+        $result = $determiner->determineLocale($request);
         $this->assertEquals($result, 'en');
 
         $request = $this->mockRequest([
@@ -49,7 +39,7 @@ class StackTest extends PHPUnit_Framework_TestCase
             'cookie' => 'fr',
             'session' => null
         ]);
-        $result = $this->determiner->determineLocale($request);
+        $result = $determiner->determineLocale($request);
         $this->assertEquals($result, 'fr');
 
         $request = $this->mockRequest([
@@ -57,7 +47,7 @@ class StackTest extends PHPUnit_Framework_TestCase
             'cookie' => null,
             'session' => 'es'
         ]);
-        $result = $this->determiner->determineLocale($request);
+        $result = $determiner->determineLocale($request);
         $this->assertEquals($result, 'es');
 
         $request = $this->mockRequest([
@@ -65,7 +55,7 @@ class StackTest extends PHPUnit_Framework_TestCase
             'cookie' => 'fr',
             'session' => null
         ]);
-        $result = $this->determiner->determineLocale($request);
+        $result = $determiner->determineLocale($request);
         $this->assertEquals($result, 'en');
 
         $request = $this->mockRequest([
@@ -73,7 +63,7 @@ class StackTest extends PHPUnit_Framework_TestCase
             'cookie' => null,
             'session' => 'es'
         ]);
-        $result = $this->determiner->determineLocale($request);
+        $result = $determiner->determineLocale($request);
         $this->assertEquals($result, 'en');
 
         $request = $this->mockRequest([
@@ -81,19 +71,30 @@ class StackTest extends PHPUnit_Framework_TestCase
             'cookie' => 'fr',
             'session' => 'es'
         ]);
-        $result = $this->determiner->determineLocale($request);
+        $result = $determiner->determineLocale($request);
         $this->assertEquals($result, 'fr');
     }
 
-    public function testUsesFallbackIfNothingFoundInStack()
+    /** @test **/
+    public function fallback_if_no_locale_found()
     {
+        $fallback = 'de';
+
+        $determiner = (new Stack(new Collection([
+            new Parameter('locale'),
+            new Cookie('locale'),
+            new Session('locale')
+        ])))->setFallback($fallback);
+
         $request = $this->mockRequest([
             'parameter' => null,
             'cookie' => null,
             'session' => null
         ]);
-        $result = $this->determiner->determineLocale($request);
-        $this->assertEquals($result, 'de');
+
+        $result = $determiner->determineLocale($request);
+
+        $this->assertEquals($result, $fallback);
     }
 
     private function mockRequest($results)

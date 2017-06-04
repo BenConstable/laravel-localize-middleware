@@ -8,23 +8,13 @@ use BenConstable\Localize\Determiners\Parameter;
 
 class ParameterTest extends PHPUnit_Framework_TestCase
 {
-    private $requestParameter;
-    private $fallback;
-    private $determiner;
-
-    public function setUp()
-    {
-        $this->requestParameter = 'locale';
-        $this->fallback = 'de';
-        $this->determiner = (new Parameter($this->requestParameter))->setFallback($this->fallback);
-    }
-
     public function tearDown()
     {
         Mockery::close();
     }
 
-    public function testDeterminesLocaleFromRequestParameter()
+    /** @test **/
+    public function determine_locale()
     {
         $locale = 'en';
 
@@ -32,25 +22,28 @@ class ParameterTest extends PHPUnit_Framework_TestCase
 
         $request
             ->shouldReceive('input')
-            ->with($this->requestParameter, $this->fallback)
+            ->with('locale', null)
             ->andReturn($locale);
 
-        $result = $this->determiner->determineLocale($request);
+        $result = (new Parameter('locale'))->determineLocale($request);
 
         $this->assertEquals($result, $locale);
     }
 
-    public function testReturnsFallbackLocaleIfNeeded()
+    /** @test **/
+    public function fallback_if_no_locale_found()
     {
+        $fallback = 'de';
+
         $request = Mockery::mock('Illuminate\Http\Request');
 
         $request
             ->shouldReceive('input')
-            ->with($this->requestParameter, $this->fallback)
-            ->andReturn($this->fallback);
+            ->with('locale', $fallback)
+            ->andReturn($fallback);
 
-        $result = $this->determiner->determineLocale($request);
+        $result = (new Parameter('locale'))->setFallback($fallback)->determineLocale($request);
 
-        $this->assertEquals($result, $this->fallback);
+        $this->assertEquals($result, $fallback);
     }
 }

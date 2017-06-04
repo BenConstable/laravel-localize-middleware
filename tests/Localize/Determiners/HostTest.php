@@ -9,68 +9,38 @@ use Illuminate\Support\Collection;
 
 class HostTest extends PHPUnit_Framework_TestCase
 {
-    private $determiner;
-
-    public function setUp()
-    {
-        $this->determiner = (new Host(new Collection([
-            'en' => 'en.example.host',
-            'fr' => 'france.example.host'
-        ])))->setFallback('de');
-    }
-
     public function tearDown()
     {
         Mockery::close();
     }
 
-    public function testDeterminesLocaleFromHost()
+    /** @test **/
+    public function determine_locale()
     {
-        // One
+        $determiner = new Host(new Collection([
+            'en' => 'en.example.host',
+            'fr' => 'france.example.host'
+        ]));
 
         $request = Mockery::mock('Illuminate\Http\Request');
-
-        $request
-            ->shouldReceive('getHost')
-            ->andReturn('france.example.host');
-
-        $locale = $this->determiner->determineLocale($request);
-
+        $request->shouldReceive('getHost')->andReturn('france.example.host');
+        $locale = $determiner->determineLocale($request);
         $this->assertEquals('fr', $locale);
 
-        // Two
-
         $request = Mockery::mock('Illuminate\Http\Request');
-
-        $request
-            ->shouldReceive('getHost')
-            ->andReturn('en.example.host');
-
-        $locale = $this->determiner->determineLocale($request);
-
+        $request->shouldReceive('getHost')->andReturn('en.example.host');
+        $locale = $determiner->determineLocale($request);
         $this->assertEquals('en', $locale);
     }
 
-    public function testReturnsFallbackLocaleIfNeeded()
+    /** @test **/
+    public function fallback_if_no_locale_found()
     {
-        // One
+        $determiner = (new Host(new Collection()))->setFallback('de');
 
         $request = Mockery::mock('Illuminate\Http\Request');
-
-        $request
-            ->shouldReceive('getHost')
-            ->andReturn('other.example.host');
-
-        $locale = $this->determiner->determineLocale($request);
-
-        $this->assertEquals('de', $locale);
-
-        // Two
-
-        $determiner = (new Host(new Collection([])))->setFallback('es');
-
+        $request->shouldReceive('getHost')->andReturn('other.example.host');
         $locale = $determiner->determineLocale($request);
-
-        $this->assertEquals('es', $locale);
+        $this->assertEquals('de', $locale);
     }
 }

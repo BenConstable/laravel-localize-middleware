@@ -8,23 +8,13 @@ use BenConstable\Localize\Determiners\Cookie;
 
 class CookieTest extends PHPUnit_Framework_TestCase
 {
-    private $cookieName;
-    private $fallback;
-    private $determiner;
-
-    public function setUp()
-    {
-        $this->cookieName = 'locale';
-        $this->fallback = 'de';
-        $this->determiner = (new Cookie($this->cookieName))->setFallback($this->fallback);
-    }
-
     public function tearDown()
     {
         Mockery::close();
     }
 
-    public function testDeterminesLocaleFromCookie()
+    /** @test **/
+    public function determine_locale()
     {
         $locale = 'en';
 
@@ -32,25 +22,28 @@ class CookieTest extends PHPUnit_Framework_TestCase
 
         $request
             ->shouldReceive('cookie')
-            ->with($this->cookieName, $this->fallback)
+            ->with('locale', null)
             ->andReturn($locale);
 
-        $result = $this->determiner->determineLocale($request);
+        $result = (new Cookie('locale'))->determineLocale($request);
 
         $this->assertEquals($result, $locale);
     }
 
-    public function testReturnsFallbackLocaleIfNeeded()
+    /** @test **/
+    public function fallback_if_no_locale_found()
     {
+        $fallback = 'de';
+
         $request = Mockery::mock('Illuminate\Http\Request');
 
         $request
             ->shouldReceive('cookie')
-            ->with($this->cookieName, $this->fallback)
-            ->andReturn($this->fallback);
+            ->with('locale', $fallback)
+            ->andReturn($fallback);
 
-        $result = $this->determiner->determineLocale($request);
+        $result = (new Cookie('locale'))->setFallback($fallback)->determineLocale($request);
 
-        $this->assertEquals($result, $this->fallback);
+        $this->assertEquals($result, $fallback);
     }
 }

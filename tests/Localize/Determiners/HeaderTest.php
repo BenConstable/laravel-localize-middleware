@@ -8,23 +8,13 @@ use BenConstable\Localize\Determiners\Header;
 
 class HeaderTest extends PHPUnit_Framework_TestCase
 {
-    private $header;
-    private $fallback;
-    private $determiner;
-
-    public function setUp()
-    {
-        $this->header = 'Accept-Language';
-        $this->fallback = 'de';
-        $this->determiner = (new Header($this->header))->setFallback($this->fallback);
-    }
-
     public function tearDown()
     {
         Mockery::close();
     }
 
-    public function testDeterminesLocaleFromHeader()
+    /** @test **/
+    public function determine_locale()
     {
         $locale = 'en';
 
@@ -32,25 +22,28 @@ class HeaderTest extends PHPUnit_Framework_TestCase
 
         $request
             ->shouldReceive('header')
-            ->with($this->header, $this->fallback)
+            ->with('Accept-Language', null)
             ->andReturn($locale);
 
-        $result = $this->determiner->determineLocale($request);
+        $result = (new Header('Accept-Language'))->determineLocale($request);
 
         $this->assertEquals($result, $locale);
     }
 
-    public function testReturnsFallbackLocaleIfNeeded()
+    /** @test **/
+    public function fallback_if_no_locale_found()
     {
+        $fallback = 'de';
+
         $request = Mockery::mock('Illuminate\Http\Request');
 
         $request
             ->shouldReceive('header')
-            ->with($this->header, $this->fallback)
-            ->andReturn($this->fallback);
+            ->with('Accept-Language', $fallback)
+            ->andReturn($fallback);
 
-        $result = $this->determiner->determineLocale($request);
+        $result = (new Header('Accept-Language'))->setFallback($fallback)->determineLocale($request);
 
-        $this->assertEquals($result, $this->fallback);
+        $this->assertEquals($result, $fallback);
     }
 }

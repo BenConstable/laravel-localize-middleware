@@ -4,8 +4,8 @@ namespace Tests\BenConstable\Localize;
 
 use Mockery;
 use PHPUnit_Framework_TestCase;
-use BenConstable\Localize\DeterminerManager;
 use BenConstable\Localize\Determiners;
+use BenConstable\Localize\DeterminerManager;
 
 class DeterminerManagerTest extends PHPUnit_Framework_TestCase
 {
@@ -28,42 +28,48 @@ class DeterminerManagerTest extends PHPUnit_Framework_TestCase
         Mockery::close();
     }
 
-    public function testThatItCreatesACookieDeterminer()
+    /** @test **/
+    public function create_a_cookie_determiner()
     {
         $manager = new DeterminerManager($this->app);
 
         $this->assertInstanceOf(Determiners\Cookie::class, $manager->driver('cookie'));
     }
 
-    public function testThatItCreatesAHostDeterminer()
+    /** @test **/
+    public function create_a_host_determiner()
     {
         $manager = new DeterminerManager($this->app);
 
         $this->assertInstanceOf(Determiners\Host::class, $manager->driver('host'));
     }
 
-    public function testThatItCreatesAParameterDeterminer()
+    /** @test **/
+    public function create_a_parameter_determiner()
     {
         $manager = new DeterminerManager($this->app);
 
         $this->assertInstanceOf(Determiners\Parameter::class, $manager->driver('parameter'));
     }
 
-    public function testThatItCreatesASessionDeterminer()
+    /** @test **/
+    public function create_a_session_determiner()
     {
         $manager = new DeterminerManager($this->app);
 
         $this->assertInstanceOf(Determiners\Session::class, $manager->driver('session'));
     }
 
-    public function testThatItCreatesAHeaderDeterminer()
+    /** @test **/
+    public function create_a_header_determiner()
     {
         $manager = new DeterminerManager($this->app);
 
         $this->assertInstanceOf(Determiners\Header::class, $manager->driver('header'));
     }
 
-    public function testThatItCreatesAStackDeterminer()
+    /** @test **/
+    public function create_a_stack_determiner()
     {
         $manager = new DeterminerManager($this->app);
 
@@ -76,7 +82,8 @@ class DeterminerManagerTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Determiners\Parameter::class, $determiner->getDeterminers()->first());
     }
 
-    public function testThatItReturnsADefaultDeterminer()
+    /** @test **/
+    public function create_a_default_determiner()
     {
         $manager = new DeterminerManager($this->app);
 
