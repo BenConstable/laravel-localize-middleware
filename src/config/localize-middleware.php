@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Localization Stategy.
+    | Localization Strategy.
     |--------------------------------------------------------------------------
     |
     | Set the strategy to use for localizing the application. You can pick from
