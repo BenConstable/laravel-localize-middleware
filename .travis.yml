@@ -17,7 +17,7 @@ cache:
 
 before_install:
     - phpenv config-rm xdebug.ini
-    - travis_retry composer require --no-update "illuminate/support:${LARAVEL_VERSION}"
+    - travis_retry composer require --no-update "laravel/framework:${LARAVEL_VERSION}"
 
 install:
     - travis_retry composer update --prefer-stable --no-interaction --no-suggest
