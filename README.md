@@ -69,15 +69,7 @@ The list of available determiners is shown below.
 The default determiner sets the application locale from a request parameter
 called `locale`. You can change this using the `parameter` configuration option.
 
-This allows you to, for example, set up your application routes like:
-
-```php
-// app/Http/routes.php
-
-Route::group(['prefix' => '{locale}'], function () {
-    // Routes here...
-});
-```
+The parameter will be discovered in the query string of request body.
 
 ### Determining the locale from a request header
 
