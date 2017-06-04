@@ -1,15 +1,26 @@
 language: php
 
 php:
-    - 5.5
     - 5.6
-    - hhvm
-    - 7
+    - 7.0
+    - 7.1
+
+env:
+  - LARAVEL_VERSION=5.1.*
+  - LARAVEL_VERSION=5.2.*
+  - LARAVEL_VERSION=5.3.*
+  - LARAVEL_VERSION=5.4.*
+
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 before_install:
-    - travis_retry composer self-update
+    - phpenv config-rm xdebug.ini
+    - travis_retry composer require --no-update "illuminate/support:${LARAVEL_VERSION}"
 
 install:
-    - travis_retry composer update --no-interaction --prefer-dist --prefer-stable --prefer-lowest
+    - travis_retry composer update --prefer-stable --no-interaction --no-suggest
 
-script: vendor/bin/phpunit
+script:
+    - composer run test
