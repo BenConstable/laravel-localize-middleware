@@ -69,7 +69,7 @@ The list of available determiners is shown below.
 The default determiner sets the application locale from a request parameter
 called `locale`. You can change this using the `parameter` configuration option.
 
-The parameter will be discovered in the query string of request body.
+The parameter will be discovered in the query string or request body.
 
 ### Determining the locale from a request header
 
