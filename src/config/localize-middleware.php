@@ -4,13 +4,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Localization Stategy.
+    | Default Localization Determiner.
     |--------------------------------------------------------------------------
     |
-    | Set the strategy to use for localizing the application. You can pick from
-    | "parameter" (the default), "host", "cookie", "header" or "session".
+    | Set the determiner to use for localizing the application. You can pick
+    | from "parameter" (the default), "host", "cookie", "header" or "session".
     |
-    | You may also set an array of strategies, and then the locale will be
+    | You may also set an array of determiners, and then the locale will be
     | determined by the first that finds a match.
     |
     */
