@@ -33,7 +33,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "BenConstable\\Test\\Localize\\": "tests/Localize"
+      "Tests\\BenConstable\\Localize\\": "tests/Localize"
     }
   },
   "extra": {

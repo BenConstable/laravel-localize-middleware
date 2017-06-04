@@ -1,6 +1,6 @@
 <?php
 
-namespace BenConstable\Test\Localize\Determiners;
+namespace Tests\BenConstable\Localize\Determiners;
 
 use Mockery;
 use PHPUnit_Framework_TestCase;
