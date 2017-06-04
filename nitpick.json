@@ -1,6 +1,6 @@
 {
-    "ignore": [
-        "tests/*",
-        "src/config/*"
-    ]
+  "ignore": [
+    "tests/*",
+    "src/config/*"
+  ]
 }
