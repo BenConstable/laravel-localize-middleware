@@ -88,5 +88,19 @@ return [
     'hosts' => [
         'en' => 'www.example.co.uk',
         'fr' => 'www.example.fr'
-    ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Locale Mapping.
+    |--------------------------------------------------------------------------
+    |
+    | Define a mapping of your supported locales.
+    | en_US => en, pt_BR => pt, etc
+    |
+    */
+    'localeMapper' => function ($locale) {
+        //some custom logic
+        return $locale;
+    },
 ];
