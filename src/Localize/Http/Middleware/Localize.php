@@ -53,6 +53,13 @@ class Localize
     {
         $locale = $this->determinerManager->determineLocale($request);
 
+        $localeMapper = !empty($this->app['config']['localize-middleware']['localeMapper']) ?
+            $this->app['config']['localize-middleware']['localeMapper'] : null;
+
+        if (is_callable($localeMapper)) {
+            $locale = $localeMapper($locale);
+        }
+
         $this->app->setLocale($locale);
 
         return $next($request);
